@@ -42,7 +42,9 @@ class ControllerResolver implements ResolverInterface
      */
     public function __invoke($object, array $args, $context, ResolveInfo $info)
     {
-        return $this->controller->__call($this->action, $args);
+        $result = $this->controller->__call($this->action, $args);
+
+        return $result->getVariables();
     }
 
 }
