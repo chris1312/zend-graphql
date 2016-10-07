@@ -1,6 +1,6 @@
 {
   "name": "willzyc/zend-graphql",
-  "description": "Create a GraphQL endpoint integrated into a Zend Framework 2/3 environment",
+  "description": "Create a GraphQL endpoint integrated into a Zend Framework 3 environment",
   "minimum-stability": "stable",
   "license": "proprietary",
   "authors": [
