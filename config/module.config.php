@@ -35,7 +35,10 @@ return [
         ],
         'initializers' => [
             'ZendGraphQL\Type\TypeFactoryInitializer',
-        ]
+        ],
+        'shared' => [
+            'ZendGraphQL\TypeFactory' => true,
+        ],
     ],
 ];
 
