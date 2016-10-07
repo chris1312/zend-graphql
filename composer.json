@@ -1,0 +1,18 @@
+{
+  "name": "willzyc/zend-graphql",
+  "description": "Create a GraphQL endpoint integrated into a Zend Framework 2/3 environment",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Daniel Wagner",
+      "email": "daniel.wagner.webdev@gmail.com"
+    }
+  ],
+  "require" : {
+    "php" : ">=7.0.0",
+    "webonyx/graphql-php": "v0.7.2",
+    "zendframework/zend-servicemanager": "3.1.1",
+    "zendframework/zend-mvc": "3.0.3"
+  }
+}
