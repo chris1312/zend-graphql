@@ -33,6 +33,9 @@ return [
 
             'ZendGraphQL\TypeFactory' => 'ZendGraphQL\Type\TypeFactory',
         ],
+        'initializers' => [
+            'ZendGraphQL\Type\TypeFactoryInitializer',
+        ]
     ],
 ];
 
