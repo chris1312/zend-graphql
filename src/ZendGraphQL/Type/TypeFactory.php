@@ -41,7 +41,7 @@ class TypeFactory implements FactoryInterface
         }
 
         if (!isset($this->types[$name])) {
-            $this->types[$name] = $this->container->get($this->typeConfig[$name]);
+            $this->types[$name] = new $this->typeConfig[$name]($this);
         }
 
         return $this->types[$name];
