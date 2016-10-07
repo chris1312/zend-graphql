@@ -32,7 +32,7 @@ class QueryFactory implements FactoryInterface
         foreach ($queryConfig['fields'] as $name => $field) {
             $queryTypeConfig['fields'][$name] = $container->get($field['service']);
 
-            $controller = $container->get('ControllerManager')->get($field['resolver']['controller']);
+            $controller = $container->get($field['resolver']['controller']);
             $action = $field['resolver']['action'];
             $queryTypeConfig['fields'][$name]['resolve'] = new ControllerResolver($controller, $action);
         }
