@@ -45,11 +45,12 @@ namespace MySite\GraphQL\ObjectType;
 
 use GraphQL\Type\Definition\ObjectType;
 use GraphQL\Type\Definition\Type;
+use ZendGraphQL\Type\TypeFactory;
 
 class User extends ObjectType
 {
 
-    public function __construct()
+    public function __construct(TypeFactory $typeFactory)
     {
         parent::__construct([
             'name' => 'User',
@@ -66,6 +67,14 @@ class User extends ObjectType
                 'email' => [
                     'type' => Type::string(),
                     'description' => 'Email of the user',
+                ],
+                'myObjectType' => [
+                    'type' => $typeFactory->getType('nameOfMyObjectType'),
+                    'description' => 'This field contains my custom object type',
+                ],
+                'bestFriend' => [
+                    'type' => $this, // If you want to use the object type itself set it to $this to avoid a circular dependency
+                    'description' => 'Best friend of the user',
                 ],
             ],
         ]);
@@ -122,7 +131,9 @@ class UserFactory implements FactoryInterface
                     'description' => 'If omitted, it returns user by email',
                 ],
             ],
-            // You dont need a resolve field because an action of your controllers will be used
+            'resolve' => function() {
+                // your resolve function
+            }
         ];
 
         return $field;
@@ -161,10 +172,6 @@ In the last step you need to configure the GraphQL schema
         'fields' => [
             'user' => [
                 'service' => 'MySite\GraphQL\Mutation\Register',
-                'resolver' => [
-                    'controller' => 'MySite\Controller\User',
-                    'action' => 'view',
-                ],
             ],
         ],
     ],
@@ -179,8 +186,6 @@ In the last step you need to configure the GraphQL schema
 ],
 ```
 
-Now you can query the user field with your action controller as the resolver. The ControllerResolver reads 
-the result from the view model. To access variables from the query or mutation in your controller just
-use $this->params('yourParam');
+Now you can query the user field.
 
 For more information on GraphQL with PHP see: https://github.com/webonyx/graphql-php
