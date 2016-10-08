@@ -32,7 +32,8 @@ class MutationFactory implements FactoryInterface
         foreach ($mutationConfig['fields'] as $name => $field) {
             $mutationTypeConfig['fields'][$name] = $container->get($field['service']);
 
-            $controller = $container->get($field['resolver']['controller']);
+            $controllerManager = $container->get('ControllerManager');
+            $controller = $controllerManager->get($field['resolver']['controller']);
             $action = $field['resolver']['action'];
             $mutationTypeConfig['fields'][$name]['resolve'] = new ControllerResolver($controller, $action);
         }
