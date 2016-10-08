@@ -17,9 +17,9 @@ abstract class AbstractFieldFactory implements FactoryInterface
      * @param ContainerInterface $container
      * @param string $requestedName
      * @param array|null $options
-     * @return ObjectType
+     * @return array
      */
-    abstract public function __invoke(ContainerInterface $container, $requestedName, array $options = null) : ObjectType;
+    abstract public function __invoke(ContainerInterface $container, $requestedName, array $options = null);
 
     /**
      * @param ContainerInterface $container
