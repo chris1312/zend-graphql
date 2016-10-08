@@ -5,7 +5,6 @@ namespace ZendGraphQL\Schema;
 use GraphQL\Type\Definition\ObjectType;
 use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
-use ZendGraphQL\Resolver\ControllerResolver;
 
 /**
  * Class MutationFactory
