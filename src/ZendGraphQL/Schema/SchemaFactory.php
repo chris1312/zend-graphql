@@ -26,8 +26,8 @@ class SchemaFactory implements FactoryInterface
         $mutationType = $this->getMutationType($container);
 
         $schema = new Schema([
-            $queryType,
-            $mutationType
+            'query' => $queryType,
+            'mutation' => $mutationType,
         ]);
 
         return $schema;
