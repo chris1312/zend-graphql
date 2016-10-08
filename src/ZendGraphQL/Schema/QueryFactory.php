@@ -31,11 +31,9 @@ class QueryFactory implements FactoryInterface
 
         foreach ($queryConfig['fields'] as $name => $field) {
             $queryTypeConfig['fields'][$name] = $container->get($field['service']);
-
-            $controllerManager = $container->get('ControllerManager');
-            $controller = $controllerManager->get($field['resolver']['controller']);
-            $action = $field['resolver']['action'];
-            $queryTypeConfig['fields'][$name]['resolve'] = new ControllerResolver($controller, $action);
+            if (!isset($queryTypeConfig['fields'][$name]['resolve'])) {
+                $queryTypeConfig['fields'][$name]['resolve'] = $container->get($field['resolver']);
+            }
         }
 
         $queryType = new ObjectType($queryTypeConfig);

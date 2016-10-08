@@ -33,15 +33,18 @@ class GraphQLController extends AbstractActionController
      */
     public function indexAction()
     {
-        $requestString = $this->params('query');
-        $variableValues = json_decode($this->params('variables'), true);
-        $operationName = $this->params('operation');
+        $requestString = $this->params()->fromPost('query');
+        $variableValues = json_decode($this->params()->fromPost('variables'), true);
+        $operationName = $this->params()->fromPost('operation');
+
+        $context = null;
 
         try {
             $result = GraphQL::execute(
                 $this->schema,
                 $requestString,
                 null,
+                $context,
                 $variableValues,
                 $operationName
             );
